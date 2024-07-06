@@ -1,5 +1,5 @@
 /*
- ** client.c -- a stream socket client demo
+ ** client.c -- a stream socket client
  */
 
 #include <stdio.h>
@@ -120,7 +120,7 @@ int main(int argc, char *argv[])
     int min = 1, max, guess;
     int result = -1;
 
-    /* TODO
+    /* 
      *
      *  get max
      *  repeat the following until result is 0
