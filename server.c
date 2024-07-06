@@ -16,6 +16,7 @@
 #include <signal.h>
 #include <time.h>
 #include <pthread.h>
+#include "socketio.c"
 
 #define PORT "3119"  // the port users will be connecting to
 
@@ -156,11 +157,6 @@ int    gmn_get_max()
     return MAX_VALUE;
 }
 
-/* If you need to add more functions, add them below */
-
-#include "socketio.c"
-
-
 typedef struct thread_arg_tag {
     int sockfd;
     int random_value;
@@ -188,7 +184,6 @@ void * thread_main(void * arg_in)
     int rv;
     int result;
 
-    // TODO
     //  send max value
     if(send(sockfd, &max_value, sizeof(int), 0) == -1) thread_die(arg);
     //  repeat the following until guess is correct
@@ -211,9 +206,6 @@ void * thread_main(void * arg_in)
     } while (result != 0);
         
     //  clean up: close FD and free memory. 
-    //
-    //  Do clean up on error. See the demo code.
-
     thread_die(arg);
     return NULL;
 }
